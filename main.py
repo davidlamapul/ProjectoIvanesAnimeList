@@ -2,18 +2,21 @@ import back_end as back
 
 def main():
     while True:
-        user = input('¿Tienes una cuenta? (Si/No)')
+        user = input('¿Tienes una cuenta? (Si/No) ')
         if user.upper() == "NO":
-            nombre = input('Introduce tu nombre')
-            correo = input('Introduce tu correo')
-            contrasenia = input('Introduce tu contraseña')
+            nombre = input('Introduce tu nombre ')
+            correo = input('Introduce tu correo ')
+            contrasenia = input('Introduce tu contraseña ')
             main_menu( back.create_user(correo, contrasenia, nombre) )
+            break
         elif user.upper() == "SI":
-            correo = input('Introduce tu correo')
-            contrasenia = input('Introduce tu contraseña')
+            correo = input('Introduce tu correo ')
+            contrasenia = input('Introduce tu contraseña ')
             main_menu( back.get_user_id(correo, contrasenia) )
+            break
         else:
             print('Por favor introduce una opcion correcta')
+        
 
 
 
@@ -39,24 +42,24 @@ def main_menu(id_user):
             back.get_all_animes()
         elif opcion == "2":
             nombre = input("Nombre del anime ")
-            anio = input('Año de estreno')
-            cap = input('Capitulos totales')
-            back.crear_anime(nombre, cap, anio)
+            anio = input('Año de estreno ')
+            cap = input('Capitulos totales ')
+            back.create_anime(nombre, cap, anio)
 
         elif opcion == "3":
             back.get_all_animes(id_user)
 
         elif opcion == "4":
             nombre = input("Nombre del anime ")
-            estado = input('Estado (finalizado/comenzado)')
+            estado = input('Estado (finalizado/comenzado) ')
             cap = input('Capitulos totales')
-            back.add(id_user, nombre, estadd, cap)
+            back.add(id_user, nombre, estado, cap)
 
         elif opcion == "5":
             nombre = input("Nombre del anime ")
-            estado = input('Estado (finalizado/comenzado)')
-            cap = input('Capitulos totales')
-            back.update(id_user, nombre, estadd, cap)
+            estado = input('Estado (finalizado/comenzado) ')
+            cap = input('Capitulos totales ')
+            back.update(id_user, nombre, estado, cap)
         elif opcion == "6":
             nombre = input("Nombre del anime ")
             back.remove(id_user, nombre)

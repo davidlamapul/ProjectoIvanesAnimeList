@@ -21,7 +21,7 @@ def create_user(email: str, password: str, username: str):
 
 def get_user_id(email: str, password: str):
     # todo check password
-    sql = f"SELECT * FROM USUARIO WHERE EMail = {email};"
+    sql = f"SELECT * FROM USUARIO WHERE EMail = '{email}';"
 
     return connection.executeall(sql)[0]['IdUser']
 
