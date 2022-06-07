@@ -6,14 +6,17 @@ def initialise_database():
         connection.createdb()
 
 
+def get_anime_id(anime_name: str):
+    sql = f"SELECT IdAnime FROM anime WHERE Nombre = '{anime_name}';"
+    return connection.executeall(sql)[0]['IdAnime']
+
+
 def create_user(email: str, password: str, username: str):
     sql = f"INSERT INTO USUARIO(Username, EMail, Pass) VALUES ('{username}', '{email}', '{password}');"
-
     connection.executeall(sql)
 
-    sql = f"SELECT IdUser FROM USUARIO WHERE EMail = '{email}';"
-
-    return connection.executeall(sql)[0]['IdUser']
+    sql2 = f"SELECT IdUser FROM USUARIO WHERE EMail = '{email}';"
+    return connection.executeall(sql2)[0]['IdUser']
 
 
 def get_user_id(email: str, password: str):
@@ -29,28 +32,35 @@ def create_anime(name_anime: str, ep_total: int, year: int, id_sequel='null'):
 
 
 # todo status por defecto en viendo
-def add(user_id: int, name_anime: str, status: str = None, ep_watched: int = 0):
-    sql = f"INSERT INTO usuario_anime"
-    print()
+def add(user_id: int, name_anime: str, status: str = 'Viendo', ep_watched: int = 0):
+    anime_id = get_anime_id(name_anime)
+
+    sql2 = f"INSERT INTO usuario_anime VALUES({user_id}, {anime_id}, {ep_watched}, '{status}');"
+    connection.executeall(sql2)
 
 
 def remove(user_id: int, id_anime: int):
-    print()
+    sql = f"DELETE FROM usuario_anime WHERE RIdUser = {user_id} AND RIdAnime = {id_anime};"
+    connection.executeall(sql)
 
 
 # status y ep_watched son opcionales
 def update(user_id: int, name_anime: str, status: str = None, ep_watched: int = None):
+    anime_id = get_anime_id(name_anime)
+
     if status is not None:
-        print()
+        sql = f"update usuario_anime set Estado = '{status}' where RIdUser = {user_id} AND RIdAnime = {anime_id};"
+        connection.executeall(sql)
 
     if ep_watched is not None:
-        print()
+        sql2 = f"update usuario_anime set EpVistos = {ep_watched} where RIdUser = {user_id} AND RIdAnime = {anime_id};"
+        connection.executeall(sql2)
 
 
-def get_all(user_id: int = None):
-    if user_id is not None:
-        print()
+def get_all_animes(user_id: int = None):
+    if user_id is None:
+        sql = f"select * from anime"
+        return connection.executeall(sql)
     else:
-        print()
-
-    return []
+        sql2 = f"select * from anime a, usuario_anime ua where a.IdAnime = ua.RIdAnime AND ua.RIdUser = {user_id};"
+        return connection.executeall(sql2)

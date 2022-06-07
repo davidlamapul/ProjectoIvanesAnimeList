@@ -36,7 +36,7 @@ def main_menu(id_user):
     while True:
         opcion = menu()
         if opcion == "1":
-            back.get_all()
+            back.get_all_animes()
         elif opcion == "2":
             nombre = input("Nombre del anime ")
             anio = input('Año de estreno')
@@ -44,7 +44,7 @@ def main_menu(id_user):
             back.crear_anime(nombre, cap, anio)
 
         elif opcion == "3":
-            back.get_all(id_user)
+            back.get_all_animes(id_user)
 
         elif opcion == "4":
             nombre = input("Nombre del anime ")
