@@ -4,6 +4,9 @@ def initialise_database():
 
 def create_user(email: str, password: str, username: str):
     user_id: int
+    sql = f"INSERT INTO USUARIO(Username, EMail, Pass) VALUES ({username}, {email}, {password})"
+
+    print(sql)
 
     return user_id
 
