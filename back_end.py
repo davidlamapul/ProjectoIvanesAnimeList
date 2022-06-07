@@ -37,6 +37,10 @@ def update(user_id: int, id_anime: int, status: str = None, ep_watched: int = No
         print()
 
 
-def get_all(user_id: int):
+def get_all(user_id: int = None):
+    if user_id is not None:
+        print()
+    else:
+        print()
 
     return []
