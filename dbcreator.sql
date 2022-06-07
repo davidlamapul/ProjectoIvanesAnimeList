@@ -9,10 +9,11 @@ Pass varchar(64) not null
 );
 
 CREATE TABLE ANIME (
-IdAnime int,
+IdAnime int not null,
 Nombre varchar(64) unique not null,
 Estreno int,
-EpTotal int not null
+EpTotal int not null,
+RIdSecuela int default null
 );
 
 CREATE TABLE IF NOT EXISTS USUARIO_ANIME (
