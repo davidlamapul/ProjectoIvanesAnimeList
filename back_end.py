@@ -4,6 +4,9 @@ def initialise_database():
 
 def create_user(email: str, password: str, username: str):
     user_id: int
+    sql = f"INSERT INTO USUARIO(Username, EMail, Pass) VALUES ({username}, {email}, {password});"
+
+    print(sql)
 
     return user_id
 
@@ -11,11 +14,18 @@ def create_user(email: str, password: str, username: str):
 def get_user_id(email: str, password: str):
     user_id: int
 
+    sql = f"SELECT * FROM USUARIO WHERE EMail = {email}"
+
     return user_id
 
 
-# todo poner todos los campos
 def create_anime(name_anime: str, ep_total: int, year: int, id_sequel: int = None):
+
+    if id_sequel is None:
+        id_sequel = 'null'
+
+    sql = f"INSERT INTO ANIME(Nombre, Estreno, EpTotal, RIdSecuela) VALUES ({name_anime}, {year}, {ep_total}, {id_sequel});"
+
     print()
 
 
