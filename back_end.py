@@ -15,7 +15,7 @@ def get_user_id(email: str, password: str):
 
 
 # todo poner todos los campos
-def create_anime(name_anime: str, ep_total: int):
+def create_anime(name_anime: str, ep_total: int, year: int, id_secula: int = None):
     print()
 
 
