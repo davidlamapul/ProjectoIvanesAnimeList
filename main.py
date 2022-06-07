@@ -50,13 +50,13 @@ def main_menu(id_user):
             nombre = input("Nombre del anime ")
             estado = input('Estado (finalizado/comenzado)')
             cap = input('Capitulos totales')
-            back.add(id_user, nombre, estadd, cap)
+            back.add(id_user, nombre, estado, cap)
 
         elif opcion == "5":
             nombre = input("Nombre del anime ")
             estado = input('Estado (finalizado/comenzado)')
             cap = input('Capitulos totales')
-            back.update(id_user, nombre, estadd, cap)
+            back.update(id_user, nombre, estado, cap)
         elif opcion == "6":
             nombre = input("Nombre del anime ")
             back.remove(id_user, nombre)
