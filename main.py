@@ -12,6 +12,12 @@ def main():
         elif user.upper() == "SI":
             correo = input('Introduce tu correo ')
             contrasenia = input('Introduce tu contraseña ')
+            try:
+                back.get_user_id(correo, contrasenia)  
+            except:
+                print('Usuario no encontrado.')
+                main()
+                break
             main_menu( back.get_user_id(correo, contrasenia) )
             break
         else:
