@@ -17,6 +17,7 @@ def main():
             except:
                 print('Usuario no encontrado.')
                 main()
+                break
             main_menu( back.get_user_id(correo, contrasenia) )
             break
         else:
