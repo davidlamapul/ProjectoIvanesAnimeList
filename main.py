@@ -6,12 +6,13 @@ def main():
         if user.upper() == "NO":
             nombre = input('Introduce tu nombre')
             correo = input('Introduce tu correo')
-            contrasenia = input('Introduce tu contraseña')
+            contrasenia = input('Introduce tu Scontraseña')
             main_menu( back.create_user(correo, contrasenia, nombre) )
         elif user.upper() == "SI":
             correo = input('Introduce tu correo')
             contrasenia = input('Introduce tu contraseña')
             main_menu( back.get_user_id(correo, contrasenia) )
+            break
         else:
             print('Por favor introduce una opcion correcta')
 
