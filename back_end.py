@@ -7,29 +7,30 @@ def initialise_database():
 
 
 def create_user(email: str, password: str, username: str):
-    sql = f"INSERT INTO USUARIO(Username, EMail, Pass) VALUES ({username}, {email}, {password});"
+    sql = f"INSERT INTO USUARIO(Username, EMail, Pass) VALUES ('{username}', '{email}', '{password}');"
 
     connection.executeall(sql)
 
-    return None
+    sql = f"SELECT IdUser FROM USUARIO WHERE EMail = '{email}';"
+
+    return connection.executeall(sql)[0]['IdUser']
 
 
 def get_user_id(email: str, password: str):
-    user_id: int
-
+    # todo check password
     sql = f"SELECT * FROM USUARIO WHERE EMail = {email};"
 
-    return user_id
+    return connection.executeall(sql)[0]['IdUser']
 
 
 def create_anime(name_anime: str, ep_total: int, year: int, id_sequel='null'):
-    sql = f"INSERT INTO ANIME(Nombre, Estreno, EpTotal, RIdSecuela) VALUES ({name_anime}, {year}, {ep_total}, {id_sequel});"
-
-    print()
+    sql = f"INSERT INTO ANIME(Nombre, Estreno, EpTotal, RIdSecuela) VALUES ('{name_anime}', {year}, {ep_total}, {id_sequel});"
+    connection.executeall(sql)
 
 
 # todo status por defecto en viendo
 def add(user_id: int, name_anime: str, status: str = None, ep_watched: int = 0):
+    sql = f"INSERT INTO usuario_anime"
     print()
 
 
