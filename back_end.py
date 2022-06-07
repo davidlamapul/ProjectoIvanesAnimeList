@@ -29,7 +29,7 @@ def remove(user_id: int, id_anime: int):
 
 
 # status y ep_watched son opcionales
-def update(user_id: int, id_anime: int, status: str = None, ep_watched: int = None):
+def update(user_id: int, name_anime: str, status: str = None, ep_watched: int = None):
     if status is not None:
         print()
 
