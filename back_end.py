@@ -1,14 +1,17 @@
+import connection
+
+
 def initialise_database():
-    print()
+    if not connection.checkdb():
+        connection.createdb()
 
 
 def create_user(email: str, password: str, username: str):
-    user_id: int
     sql = f"INSERT INTO USUARIO(Username, EMail, Pass) VALUES ({username}, {email}, {password});"
 
-    print(sql)
+    connection.executeall(sql)
 
-    return user_id
+    return None
 
 
 def get_user_id(email: str, password: str):

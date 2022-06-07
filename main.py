@@ -63,6 +63,7 @@ def main_menu(id_user):
         elif opcion == "7":
             break
 
+back.initialise_database()
 main()
 
 
