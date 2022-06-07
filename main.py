@@ -1,31 +1,14 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
-
-import back_end.py as back
+import back_end as back
 
 def main():
     while True:
         user = input('¿Tienes una cuenta? (Si/No)')
-        if user.upper() = "NO":
+        if user.upper() == "NO":
             nombre = input('Introduce tu nombre')
             correo = input('Introduce tu correo')
             contrasenia = input('Introduce tu contraseña')
             main_menu( back.create_user(correo, contrasenia, nombre) )
-        elif user.upper() = "SI":
+        elif user.upper() == "SI":
             correo = input('Introduce tu correo')
             contrasenia = input('Introduce tu contraseña')
             main_menu( back.get_user_id(correo, contrasenia) )
@@ -49,23 +32,25 @@ el mensaje hasta que introduzcas una opcion correcta''')
     opcion = input("\n")
     return opcion
 
-def main_menu():
+def main_menu(id_user):
     while True:
         opcion = menu()
         if opcion == "1":
-            read_file()
+            back.get_all()
         elif opcion == "2":
-            cliente = input("Nombre del cliente a consultar ")
-            read_one_file(cliente)
+            nombre = input("Nombre del anime ")
+            anio = input('Año de estreno')
+            cap = input('Capitulos totales')
+            back.crear_anime(nombre, cap, anio)
 
         elif opcion == "3":
-            cliente = input("Nombre del cliente para añadir ")
-            telefono = input("Teléfono del cliente para añadir ")
-            add_file(cliente, telefono)
+            back.get_all(id_user)
 
         elif opcion == "4":
-            cliente = input("Nombre del cliente a borrar ")
-            delete_file(cliente)
+            nombre = input("Nombre del anime ")
+            estado = input('Estado (finalizado/comenzado)')
+            cap = input('Capitulos totales')
+            add(id_user, nombre, estadd, cap)
 
         else:
             break
