@@ -41,7 +41,7 @@ def main_menu(id_user):
             nombre = input("Nombre del anime ")
             anio = input('Año de estreno')
             cap = input('Capitulos totales')
-            back.crear_anime(nombre, cap, anio)
+            back.create_anime(nombre, cap, anio)
 
         elif opcion == "3":
             back.get_all(id_user)
