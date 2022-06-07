@@ -39,8 +39,10 @@ def add(user_id: int, name_anime: str, status: str = 'Viendo', ep_watched: int =
     connection.executeall(sql2)
 
 
-def remove(user_id: int, id_anime: int):
-    sql = f"DELETE FROM usuario_anime WHERE RIdUser = {user_id} AND RIdAnime = {id_anime};"
+def remove(user_id: int, name_anime: str):
+    anime_id = get_anime_id(name_anime)
+
+    sql = f"DELETE FROM usuario_anime WHERE RIdUser = {user_id} AND RIdAnime = {anime_id};"
     connection.executeall(sql)
 
 
