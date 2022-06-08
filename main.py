@@ -49,7 +49,8 @@ def menu():
 4- Para añadir a mi lista de animes vistos o en pendiente
 5- Para modificar el estado de un anime
 6- Para borrar un anime de mi lista
-7- Para salir de la aplicacion
+7- Para exportar la lista
+8- Para salir de la aplicacion
 Aviso: si introduces una opcion incorrecta se volvera a mostrar
 el mensaje hasta que introduzcas una opcion correcta''')
     opcion = input("\n")
@@ -59,15 +60,23 @@ def main_menu(id_user):
     while True:
         opcion = menu()
         if opcion == "1":
-            back.get_all_animes()
+            lista = back.get_all_animes()
+            print('Nombre              Estreno EpTotal Secuela')
+            for l in lista:
+                print(f"{l['Nombre']:<20}{l['Estreno']:<8} {l['EpTotal']:<7} {l['RIdSecuela']}")
+            
         elif opcion == "2":
             nombre = input("Nombre del anime ")
             anio = input('Año de estreno ')
             cap = input('Capitulos totales ')
             back.create_anime(nombre, cap, anio)
+            
 
         elif opcion == "3":
-            back.get_all_animes(id_user)
+            lista = back.get_all_animes(id_user)
+            print('Nombre              Estreno EpTotal Estado')
+            for l in lista:
+                print(f"{l['Nombre']:<20}{l['EpTotal']:<8}{l['Estreno']:<7} {l['Estado']}")
 
         elif opcion == "4":
             nombre = input("Nombre del anime ")
@@ -84,6 +93,8 @@ def main_menu(id_user):
             nombre = input("Nombre del anime ")
             back.remove(id_user, nombre)
         elif opcion == "7":
+            back.export()
+        elif opcion == "8":
             break
 
 back.initialise_database()
