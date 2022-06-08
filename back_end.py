@@ -59,7 +59,7 @@ def update(user_id: int, name_anime: str, status: str = None, ep_watched: int = 
 
 def get_all_animes(user_id: int = None):
     if user_id is None:
-        sql = f"select * from anime"
+        sql = f"select * from anime;"
         return connection.executeall(sql)
     else:
         sql2 = f"select * from anime a, usuario_anime ua where a.IdAnime = ua.RIdAnime AND ua.RIdUser = {user_id};"

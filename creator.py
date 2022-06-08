@@ -1,6 +1,7 @@
 import pymysql
 from pymysql.cursors import DictCursor
 
+
 def main():
     try:
         conexion = pymysql.connect(host='localhost',
@@ -8,7 +9,7 @@ def main():
                                    password='esplai22',
                                    cursorclass=DictCursor)
         with conexion.cursor() as cursor:
-            cursor.execute('use sakila; select * from actor;')
+            cursor.execute('')
             a=cursor.fetchall()
         print(a)
         conexion.close()
@@ -16,4 +17,4 @@ def main():
         print("Ocurrió un error al conectar: ", e)
         
 with open('dbcreator.sql', 'r') as file:
-    print(file.read().replace('\n','').split(';').remove(''))
+    print(file.read().replace('\n','').split(';'))
