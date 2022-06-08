@@ -27,7 +27,7 @@ def main():
             correo = input('Introduce tu correo ')
             contrasenia = input('Introduce tu contraseña ')
             try:
-                back.get_user_id(correo, contrasenia)  
+                back.get_user_id(correo, contrasenia)
             except:
                 print('Usuario no encontrado.')
                 main()
@@ -36,7 +36,6 @@ def main():
             break
         else:
             print('Por favor introduce una opcion correcta')
-        
 
 
 
@@ -58,13 +57,16 @@ el mensaje hasta que introduzcas una opcion correcta''')
 
 def main_menu(id_user):
     while True:
+        print()
         opcion = menu()
         if opcion == "1":
             lista = back.get_all_animes()
-            print('Nombre              Estreno EpTotal Secuela')
-            for l in lista:
-                print(f"{l['Nombre']:<20}{l['Estreno']:<8} {l['EpTotal']:<7} {l['RIdSecuela']}")
-            
+            if len(lista) >0:
+                print('Nombre              Estreno EpTotal Secuela')
+                for l in lista:
+                    print(f"{l['Nombre']:<20}{l['Estreno']:<8} {l['EpTotal']:<7} {l['RIdSecuela']}")
+            else:
+                print("No hay anime en la lista, se el primero en agregar el primer anime")
         elif opcion == "2":
             nombre = input("Nombre del anime ")
             anio = input('Año de estreno ')
@@ -74,10 +76,12 @@ def main_menu(id_user):
 
         elif opcion == "3":
             lista = back.get_all_animes(id_user)
-            print('Nombre              Estreno EpTotal Estado')
-            for l in lista:
-                print(f"{l['Nombre']:<20}{l['EpTotal']:<8}{l['Estreno']:<7} {l['Estado']}")
-
+            if len(lista) >0:
+                print('Nombre              Estreno EpTotal Estado')
+                for l in lista:
+                    print(f"{l['Nombre']:<20}{l['EpTotal']:<8}{l['Estreno']:<7} {l['Estado']}")
+            else:
+                print("Agrega tu primer anime!!!")
         elif opcion == "4":
             nombre = input("Nombre del anime ")
             estado = ask_status()
