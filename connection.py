@@ -27,10 +27,7 @@ def createdb():
     with open('dbcreator.sql', 'r') as file:
         script=file.read()
     commands=script.replace('\n',' ').split(';')
-    try:
-        commands.remove('')
-    except:
-        pass
+    commands.remove('')
     connexion = pymysql.connect(host='localhost',
                            user='root',
                            password='esplai22',
@@ -55,10 +52,7 @@ def executeall(script):
     Retorna el output del script.
     '''
     commands=script.replace('\n','').split(';')
-    try:
-        commands.remove('')
-    except:
-        pass
+    commands.remove('')
     connexion = pymysql.connect(host='localhost',
                            user='root',
                            password='esplai22',
