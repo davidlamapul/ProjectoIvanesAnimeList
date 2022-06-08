@@ -29,7 +29,7 @@ def main():
             try:
                 back.get_user_id(correo, contrasenia)
             except:
-                print('Usuario no encontrado.')
+                print('Usuario o contraseña incorrectos.')
                 main()
                 break
             main_menu( back.get_user_id(correo, contrasenia) )
