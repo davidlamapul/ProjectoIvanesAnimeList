@@ -66,3 +66,12 @@ def get_all_animes(user_id: int = None):
     else:
         sql2 = f"select * from anime a, usuario_anime ua where a.IdAnime = ua.RIdAnime AND ua.RIdUser = {user_id};"
         return connection.executeall(sql2)
+
+def export(id_user):
+    sql=f'''select a.Nombre, a.Estreno, a.EpTotal, ua.EpVistos, ua.Estado from anime a
+    inner join usuario_anime ua
+    on ua.ridAnime=a.idanime
+    inner join usuario u
+    on u.iduser=ua.riduser
+    where iduser = {id_user};'''
+    return connection.executeall(sql)

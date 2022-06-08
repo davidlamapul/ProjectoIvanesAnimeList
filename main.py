@@ -93,7 +93,10 @@ def main_menu(id_user):
             nombre = input("Nombre del anime ")
             back.remove(id_user, nombre)
         elif opcion == "7":
-            back.export()
+            lista=back.export(id_user)
+            print(f"{'Nombre':<20} {'Estreno':<7} {'EpTotal':<8} {'EpVistos':<8} {'Estado':<16}")
+            for l in lista:
+                print(f"{l['Nombre']:<20} {l['Estreno']:<7} {l['EpTotal']:<8} {l['EpVistos']:<8} {l['Estado']:<16}")
         elif opcion == "8":
             break
 
