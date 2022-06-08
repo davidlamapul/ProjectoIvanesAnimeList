@@ -74,4 +74,13 @@ def export(id_user):
     inner join usuario u
     on u.iduser=ua.riduser
     where iduser = {id_user};'''
-    return connection.executeall(sql)
+    sql2=f'select username from usuario where iduser = {id_user};'
+    lista=connection.executeall(sql)
+    username=connection.executeall(sql2)[0]['username']
+    with open(f'{username}_animelist.txt','w') as f:
+        f.write(f"{'Nombre':<20} {'Estreno':<8} {'EpTotal':<8} {'EpVistos':<8} {'Estado':<12}\n")
+        for l in lista:
+            line=f"{l['Nombre']:<20} {l['Estreno']:<8} {l['EpTotal']:<8} {l['EpVistos']:<8} {l['Estado']:<12}"
+            if l!=lista[-1]:
+                line=line+'\n'
+            f.write(line)
