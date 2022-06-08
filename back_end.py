@@ -20,8 +20,7 @@ def create_user(email: str, password: str, username: str):
 
 
 def get_user_id(email: str, password: str):
-    # todo check password
-    sql = f"SELECT * FROM USUARIO WHERE EMail = '{email}';"
+    sql = f"SELECT * FROM USUARIO WHERE EMail = '{email}' AND Pass = '{password}';"
 
     return connection.executeall(sql)[0]['IdUser']
 
@@ -31,7 +30,6 @@ def create_anime(name_anime: str, ep_total: int, year: int, id_sequel='null'):
     connection.executeall(sql)
 
 
-# todo status por defecto en viendo
 def add(user_id: int, name_anime: str, status: str = 'Viendo', ep_watched: int = 0):
     anime_id = get_anime_id(name_anime)
 
@@ -66,6 +64,7 @@ def get_all_animes(user_id: int = None):
     else:
         sql2 = f"select * from anime a, usuario_anime ua where a.IdAnime = ua.RIdAnime AND ua.RIdUser = {user_id};"
         return connection.executeall(sql2)
+
 
 def export(id_user):
     sql=f'''select a.Nombre, a.Estreno, a.EpTotal, ua.EpVistos, ua.Estado from anime a
