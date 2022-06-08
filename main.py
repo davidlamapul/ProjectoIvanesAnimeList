@@ -21,7 +21,7 @@ def main():
             nombre = input('Introduce tu nombre ')
             correo = input('Introduce tu correo ')
             contrasenia = input('Introduce tu contraseña ')
-            main_menu( back.create_user(correo, contrasenia, nombre) )
+            main_menu(back.create_user(correo, contrasenia, nombre))
             break
         elif user.upper() == "SI":
             correo = input('Introduce tu correo ')
@@ -32,12 +32,10 @@ def main():
                 print('Usuario o contraseña incorrectos.')
                 main()
                 break
-            main_menu( back.get_user_id(correo, contrasenia) )
+            main_menu(back.get_user_id(correo, contrasenia))
             break
         else:
             print('Por favor introduce una opcion correcta')
-
-
 
 
 def menu():
@@ -55,33 +53,35 @@ el mensaje hasta que introduzcas una opcion correcta''')
     opcion = input("\n")
     return opcion
 
+
 def main_menu(id_user):
     while True:
         print()
         opcion = menu()
         if opcion == "1":
             lista = back.get_all_animes()
-            if len(lista) >0:
+            if len(lista) > 0:
                 print('Nombre              Estreno EpTotal Secuela')
                 for l in lista:
                     print(f"{l['Nombre']:<20}{l['Estreno']:<8} {l['EpTotal']:<7} {l['RIdSecuela']}")
             else:
                 print("No hay anime en la lista, se el primero en agregar el primer anime")
+
         elif opcion == "2":
             nombre = input("Nombre del anime ")
             anio = input('Año de estreno ')
             cap = input('Capitulos totales ')
             back.create_anime(nombre, cap, anio)
-            
 
         elif opcion == "3":
             lista = back.get_all_animes(id_user)
-            if len(lista) >0:
+            if len(lista) > 0:
                 print('Nombre              Estreno EpTotal Estado')
                 for l in lista:
                     print(f"{l['Nombre']:<20}{l['EpTotal']:<8}{l['Estreno']:<7} {l['Estado']}")
             else:
                 print("Agrega tu primer anime!!!")
+
         elif opcion == "4":
             nombre = input("Nombre del anime ")
             estado = ask_status()
@@ -93,16 +93,17 @@ def main_menu(id_user):
             estado = ask_status()
             cap = input('Capitulos totales ')
             back.update(id_user, nombre, estado, cap)
+
         elif opcion == "6":
             nombre = input("Nombre del anime ")
             back.remove(id_user, nombre)
+
         elif opcion == "7":
             back.export(id_user)
+
         elif opcion == "8":
             break
 
+
 back.initialise_database()
 main()
-
-
-
